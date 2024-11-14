@@ -21,7 +21,7 @@ const WatchPage = () => {
     useEffect(() => {
         const getTrailers = async () => {
             try {
-                const res = await axios.get(`/api/v1/netflix/${contentType}/${id}/trailers`)
+                const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${contentType}/${id}/trailers`)
                 setTrailers(res.data.trailer)
             } catch (error) {
                 if (error.message.includes('404')) {
@@ -35,7 +35,7 @@ const WatchPage = () => {
     useEffect(() => {
         const getSimilarMoviesTvs = async () => {
             try {
-                const res = await axios.get(`/api/v1/netflix/${contentType}/${id}/similars`)
+                const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${contentType}/${id}/similars`)
                 setSimilarMovieTvs(res.data.similar)
             } catch (error) {
                 if (error.message.includes('404')) {
@@ -49,7 +49,7 @@ const WatchPage = () => {
     useEffect(() => {
         const getMoviesTvsDetails = async() => {
             try {
-                const res = await axios.get(`/api/v1/netflix/${contentType}/${id}/details`)
+                const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${contentType}/${id}/details`)
                 setMovieTvDetails(res.data.detail)
             } catch (error) {
                 if(error.message.includes('404')){

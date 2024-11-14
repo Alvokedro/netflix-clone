@@ -22,7 +22,7 @@ const SearchPage = () => {
     const handleSearch = async(e) => {
         e.preventDefault();
         try {
-            const res = await axios.get(`api/v1/netflix/search/${activeTab}/${searchTerm}`)
+            const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${activeTab}/${searchTerm}`)
             setResults(res.data.search);
         } catch (error) {
             if(error.response.status === '404'){

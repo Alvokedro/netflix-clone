@@ -16,7 +16,7 @@ const MovieTvSlider = ({ category }) => {
 
     useEffect(() => {
         const getContent = async () => {
-            const res = await axios.get(`/api/v1/netflix/${contentType}/${category}`);
+            const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${contentType}/${category}`);
             setMovieTvs(res.data.content)
         }
         getContent();

@@ -9,7 +9,7 @@ const useGetTrendingContent = () => {
     
     useEffect(() => {
         async function getTrendingContent(){
-            const res = await axios.get(`/api/v1/netflix/${contentType}/trending`);
+            const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/${contentType}/trending`);
             setTrendingContent(res.data.content)
         }
         getTrendingContent()

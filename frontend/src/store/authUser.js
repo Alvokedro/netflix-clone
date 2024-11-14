@@ -11,7 +11,7 @@ export const useAuthStore = create((set) => ({
     signup : async (credentials) => {
         set({ isSignup : true })
         try {
-            const res = await axios.post("/api/v1/netflix/auth/signup",credentials);
+            const res = await axios.post(`${import.meta.env.LOCALHOST}/api/v1/netflix/auth/signup`,credentials);
             set({ user : res.data.user,isSignup : false })
             toast.success("Signup Successfully")
         } catch (error) {
@@ -22,7 +22,7 @@ export const useAuthStore = create((set) => ({
     login : async (credentials) => {
         set({ isLogin : true })
         try {
-            const res = await axios.post("/api/v1/netflix/auth/login",credentials);
+            const res = await axios.post(`${import.meta.env.LOCALHOST}/api/v1/netflix/auth/login`,credentials);
             set({ user : res.data.user,isLogin : false })
             toast.success("Login Successfully")
         } catch (error) {
@@ -33,7 +33,7 @@ export const useAuthStore = create((set) => ({
     logout : async () => {
         set({ isLoggingOut : true })
         try {
-            await axios.post("/api/v1/netflix/auth/logout");
+            await axios.post(`${import.meta.env.LOCALHOST}/api/v1/netflix/auth/logout`);
             set({ user : null,isLoggingOut : false })
             toast.success("Logout Successfully")
 
@@ -45,7 +45,7 @@ export const useAuthStore = create((set) => ({
     authCheck : async () => {
         try {
             set({ isCheckingAuth : true })
-            const res = await axios.get("/api/v1/netflix/auth/authCheck");
+            const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/auth/authCheck`);
             set({ user : res.data.user,isCheckingAuth : false})
         } catch (error) {
             set({ user : null,isCheckingAuth : false})

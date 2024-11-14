@@ -11,7 +11,7 @@ const SearchHistory = () => {
     useEffect(() =>{
         const getSearchHistory = async() => {
             try {
-                const res = await axios.get(`/api/v1/netflix/search/history`);
+                const res = await axios.get(`${import.meta.env.LOCALHOST}/api/v1/netflix/history`);
                 setSearchHistory(res.data.history)
             } catch (error) {
                 setSearchHistory([])
@@ -22,7 +22,7 @@ const SearchHistory = () => {
 
     const handleDelete = async(id) => {
         try {
-            const res = await axios.delete(`/api/v1/netflix/search/history/remove/${id}`);
+            const res = await axios.delete(`${import.meta.env.LOCALHOST}/api/v1/netflix/auth/remove/${id}`);
             setSearchHistory(searchHistory.filter(item => item.id !== id))
             toast.success(res.data.message)
         } catch (error) {
